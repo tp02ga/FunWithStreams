@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -14,6 +13,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+
+import com.coderscampus.utils.RandomDataUtil;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class SortingExample {
@@ -80,19 +81,13 @@ public class SortingExample {
         List<User> users = new ArrayList<>();
         IntStream.range(0, count)
                 .forEach(i -> {
-                    users.add(new User(i, generateUsername(), generatePassword(), generateDate()));
+                    users.add(new User(i, generateUsername(), generatePassword(), RandomDataUtil.generateDate()));
                 });
 
         return users;
     }
 
-    private LocalDate generateDate() {
-        long minDay = LocalDate.now().minusDays(90).toEpochDay();
-        long maxDay = LocalDate.now().toEpochDay();
-        long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
-        LocalDate randomDate = LocalDate.ofEpochDay(randomDay);
-        return randomDate;
-    }
+    
 
     private String generateUsername() {
         Random random = new Random();
