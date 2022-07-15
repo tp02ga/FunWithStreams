@@ -2,6 +2,4 @@
 
 Sorting filtering and iterating through data using streams
 
-Shows how to do in streams, but also compares it to the pre-streams approach
-
-Testing for input streams
+Shows you how you can use a "functional programming" approach to iterating through Collections with the Java language.
